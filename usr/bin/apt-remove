@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+err = 0
+try:    
+    import sys
+    import os
+    arg = len(sys.argv)
+    if os.getuid() != 0:
+        err = 1
+        print("Diese Programm erfordert Root Rechte")
+        sys.exit(1)
+    arg = len(sys.argv)
+    if arg < 2:
+        print("Paketname muss angegeben werden")
+        err = 1
+        sys.exit(1)
+    s = sys.argv
+    s.remove("/home/Jani/Dokumente/Build/Source/usr/bin/apt-remove")
+    str1 = " ".join(s)
+    command = "apt-get remove " + str1
+    #print(command)
+    os.system(command)
+    os.system("apt-get autoremove")
+except:   
+    if err == 1:
+        sys.exit(1)
+    else:
+        print("Während des Entfernens ist ein Fehler aufgetreten")

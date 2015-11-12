@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+import sys
+import os
+import time
+def shell(command):
+    os.system(command)
+def wait(tim):
+    time.sleep(tim)
+config= open("/home/jani/Dokumente/Build/Source/usr/share/toolkit/toolkit.cfg", 'r+')
+while True:    
+    if len(sys.argv) < 2:
+        shell("clear")
+        print("========================================================================================")
+        print("=                        SYSADMIN - Systemadministrationssoftware                      =")
+        print("========================================================================================\n")
+        print("Zur verfügung stehende Optionen:\n")
+        print("1 LAMP installieren (Linux, Apache, MySQL, PHP) •Root")
+        print("2 Kernelparameter bearbeiten •Root")
+        print("3 Veraltete, nicht mehr benötigte Pakete entferenen •Root")
+        print("4 Paketlisten bearbeiten •Root")
+        print("5 Systemeinstellungen öffnen")
+        print("6 Dateisystemcheck durchführen  •!•ALPHA•!•")
+        print("7 Dateimanager öffnen")
+        print("8 .config Verzeichnis öffnen")
+        print("\ne Benden")
+        print("\nFILE Verwendeten Dateimanager einstellen")
+        print("SYS Verwendetes System einstellen")
+        print("HELP Hilfe erhalten •!•ALPHA•!•")
+        opt = input("\nOption : ")
+        if opt == "1":
+            shell("clear")
+            print("========================================================================================")
+            print("=                                    LAMP-Installation                                 =")
+            print("========================================================================================\n")
+            print("Dies wird die folgenden Pakete installieren: apache2 libapache2-mod-php5 php5 mysql\n")
+            choose= input("Fortfahen(j/n)? ")
+            if choose == "j":
+                shell("sudo apt-get install apache2 libapache2-mod-php5 php5 mysql")
+                shell("sudo a2enmod php5")
+            else:
+                print("Abbruch.")
+                wait(1)
+        if opt == "2":
+            shell("clear")
+            shell("sudo editor /etc/default/grub")
+            shell("sudo update-grub")
+        if opt == "3":
+            print("========================================================================================")
+            print("=                     Entfernen von nicht mehr benötigten Paketen                      =")
+            print("========================================================================================\n")
+            choose = input("Wirklich alle nicht mehr benötigten Pakete entfernen(j/n)?")
+            if choose == "j":
+                shell("sudo apt-get autoremove")
+            else:
+                print("Abbruch.")
+                wait(1)
+        if opt == "4":
+            shell("sudo editor /etc/apt/sources.list")
+            shell("sudo apt-get update")
+        if opt == "7":
+            config.seek(27)
+            if config.read() == "DOLPHIN\n":
+                shell("dolphin &")
+            if config.read() == "NAUTILUS\n":
+                shell("nautilus &")
+            if config.read() == "PCMANFM\n":
+                shell("pcmanfm &")
+            if config.read() == "THUNAR\n":
+               shell("thunar &")
+            
+            
