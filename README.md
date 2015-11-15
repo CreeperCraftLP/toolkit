@@ -1,2 +1,2 @@
 # toolkit
-Dieses Repository beinhaltet ein Python Linux Toolkit.
+Dieses Repository beinhaltet ein Python Toolkit.
