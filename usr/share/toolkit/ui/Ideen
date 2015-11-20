@@ -1,6 +1,0 @@
-Neues Modul names ui.py
-Funktionen:
-- erstellen von IntVar() Objeketen pro Button
-- API zum hinzufügen von Buttons
-- steureung der Fenstergröße
-GUI.py Datei als Mainwindow
